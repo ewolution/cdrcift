@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Dagıtım / yerel
+dist/
+*.gms
+*.cdr
+*.plt
+*.bak
+
+# Editör
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini
