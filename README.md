@@ -22,23 +22,34 @@ CorelDRAW 2024 / 2025 / 2026   ·   JavaScript (V8)   ·   kurulum gerektirmez
 
 ## Kurulum
 
-### Otomatik (Windows)
+### Tek tıkla (Windows, önerilen)
+
+Depoyu indirip **`tools\KUR.cmd`** dosyasına çift tıklayın.
+
+- Kurulu **tüm** CorelDRAW sürümlerini (2024/2025/2026) bulur,
+- `Draw\Scripts` klasörüne **cp1254** kodlamasıyla kopyalar,
+- Yönetici hakkı, Python veya kayıt defteri değişikliği **gerektirmez**.
+
+Komut satırından:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools\kur.ps1
+powershell -ExecutionPolicy Bypass -File tools\kur.ps1 -Surum 2026
+powershell -ExecutionPolicy Bypass -File tools\kur.ps1 -Kaldir
+```
+
+Kaldırma: **`tools\KALDIR.cmd`** (veya `kur.ps1 -Kaldir`).
+
+### Python ile (geliştirici)
 
 ```powershell
 python tools\js_kur.py
 ```
 
-Scriptleri CorelDRAW'ın `Scripts` klasörüne, mevcut scriptlerle aynı kodlamada
-(**cp1254**) yazar:
+Scriptleri aynı klasöre yazar:
 
 ```
 %APPDATA%\Corel\CorelDRAW Graphics Suite 2026\Draw\Scripts\CiftCizgi.js
-```
-
-Başka sürüm için:
-
-```powershell
-python tools\js_kur.py --surum "Graphics Suite 2025"
 ```
 
 ### Elle
@@ -128,7 +139,10 @@ js/
   CiftCizgi.js           Tek dosyalık araç
   test_ciftcizgi.js      Node testleri (mock ile 41 test)
 tools/
-  js_kur.py              Scripts klasörüne kurulum (UTF-8 -> cp1254)
+  kur.ps1                Tek tıkla kurulum / kaldırma (Windows)
+  KUR.cmd                Çift tıklama kısayolu
+  KALDIR.cmd             Kaldırma kısayolu
+  js_kur.py              Alternatif kurulum (UTF-8 -> cp1254)
   geom_referans.py       Algoritmanın Python referansı
   test_geom.py           Referans testleri (15)
   coredraw_smoke.ps1     CorelDRAW API doğrulaması (29 kontrol)

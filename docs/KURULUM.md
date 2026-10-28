@@ -2,28 +2,37 @@
 
 > Yönetici hakkı, GMS kaydı veya makro güvenliği ayarı gerekmez.
 
-## 1. Otomatik kurulum (bu makinede yapıldı)
+## 1. Tek tıkla kurulum (Windows)
+
+Depoyu indirin ve **`tools\KUR.cmd`** dosyasına çift tıklayın.
+
+Yaptıkları:
+
+1. `%APPDATA%\Corel\CorelDRAW Graphics Suite <yıl>\Draw` klasörlerini tarar
+   (2024 / 2025 / 2026 — hangileri kuruluysa).
+2. Her birinin `Scripts` klasörünü oluşturur (yoksa).
+3. `CiftCizgi.js` dosyasını **cp1254 (ANSI)** kodlamasıyla kopyalar
+   (mevcut dosya varsa `.bak` yedeği alır).
+4. Geri okuyup doğrular, sonucu listeler.
+
+Komut satırı seçenekleri:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools\kur.ps1              # tüm sürümler
+powershell -ExecutionPolicy Bypass -File tools\kur.ps1 -Surum 2026   # tek sürüm
+powershell -ExecutionPolicy Bypass -File tools\kur.ps1 -Kaldir       # kaldır
+powershell -ExecutionPolicy Bypass -File tools\kur.ps1 -KlasorAc     # sonra klasörü aç
+```
+
+Kaldırma için **`tools\KALDIR.cmd`** de kullanılabilir.
+
+### Python ile alternatif
 
 ```powershell
 python tools\js_kur.py
 ```
 
-Scriptleri şuraya yazar (mevcut Summa scriptlerinin yanına):
-
-```
-%APPDATA%\Corel\CorelDRAW Graphics Suite 2026\Draw\Scripts\
-    CiftCizgi.js
-```
-
-Kodlama **cp1254** (ANSI): CorelDRAW'ın JavaScript host'u, mevcut Summa
-scriptlerinizle aynı kodlamayı bekliyor. Araç UTF-8 kaynağı çevirip geri
-okuyarak doğrular.
-
-Başka bir sürüm için:
-
-```powershell
-python tools\js_kur.py --surum "Graphics Suite 2025"
-```
+Aynı işi yapar (geliştirici makinesinde hızlı).
 
 ## 2. Elle kurulum (gerekirse)
 
